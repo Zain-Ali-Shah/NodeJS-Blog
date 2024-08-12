@@ -1,0 +1,70 @@
+<main class="container2">
+	<div class="container">
+		<h1>Sign In</h1>
+		<form action="/login" method="POST">
+			<div class="form-group">
+				<label for="username"><b>UserName:</b></label>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					placeholder="Enter UserName"
+					required
+				/>
+			</div>
+			<div class="form-group">
+				<label for="password"><b>Password:</b></label>
+				<input
+					type="tel"
+					id="password"
+					name="password"
+					placeholder="Enter Password"
+					required
+				/>
+			</div>
+			<button type="submit">Login</button>
+		</form>
+		<% if (typeof success !== 'undefined') { %>
+		<p class="success-message"><%= success %></p>
+		<% } %>
+	</div>
+	<div class="container">
+		<h1>Register</h1>
+		<form action="/register" method="POST">
+			<div class="form-group">
+				<label for="username"><b>UserName:</b></label>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					placeholder="Enter UserName"
+					required
+				/>
+			</div>
+			<div class="form-group">
+				<label for="password"><b>Password:</b></label>
+				<input
+					type="tel"
+					id="password"
+					name="password"
+					placeholder="Enter Password"
+					required
+				/>
+			</div>
+			<button type="submit">Register</button>
+		</form>
+		<% if (typeof success !== 'undefined') { %>
+		<p class="success-message"><%= success %></p>
+		<% } %>
+	</div>
+</main>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const successMessage = document.querySelector(".success-message");
+		if (successMessage) {
+			setTimeout(() => {
+				successMessage.style.display = "none";
+			}, 1000); // Hide message after 1 second
+		}
+	});
+</script>

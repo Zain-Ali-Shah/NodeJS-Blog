@@ -1,0 +1,32 @@
+<header>
+	<div class="container">
+		<div class="logo">
+			<h1>NodeJS Blog</h1>
+		</div>
+		<nav>
+			<ul>
+				<li>
+					<a
+						href="/"
+						class="<%= (locals.currentPath === '/') ? 'active' : '' %>"
+						>Home</a
+					>
+				</li>
+				<li>
+					<a
+						href="/about"
+						class="<%= (locals.currentPath === '/about') ? 'active' : '' %>"
+						>About</a
+					>
+				</li>
+				<li>
+					<a
+						href="/contact"
+						class="<%= (locals.currentPath === '/contact') ? 'active' : '' %>"
+						>Contact</a
+					>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>

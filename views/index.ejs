@@ -1,0 +1,56 @@
+<main class="container2">
+	<div class="container">
+		<h1>Home</h1>
+		<% if (typeof error !== 'undefined') { %>
+		<p class="error-message"><%= error %></p>
+		<% } %> <% if (typeof message !== 'undefined') { %>
+		<p id="success-message" class="success-message"><%= message %></p>
+		<% } %>
+		<ul class="contacts-list">
+			<% contacts.forEach(contact => { %>
+			<li class="contact-item">
+				<h2><%= contact.name %></h2>
+				<p><strong>Phone:</strong> <%= contact.phone %></p>
+				<p><strong>Email:</strong> <%= contact.email %></p>
+				<p><strong>Address:</strong> <%= contact.address %></p>
+				<a href="/edit-contact/<%= contact._id %>" class="button">Edit</a>
+				<form
+					action="/delete/<%= contact._id %>"
+					method="POST"
+					style="display: inline"
+				>
+					<button type="submit" class="button">Delete</button>
+				</form>
+			</li>
+			<% }) %>
+		</ul>
+		<div class="pagination">
+			<% if (prevPage !== null) { %>
+			<a href="/?page=<%= prevPage %>" class="pagination-link">Prev</a>
+			<% } %> <% for (let i = 1; i <= totalPages; i++) { %>
+			<a
+				href="/?page=<%= i %>"
+				class="pagination-link <%= i === current ? 'active' : '' %>"
+				><%= i %></a
+			>
+			<% } %> <% if (nextPage !== null) { %>
+			<a href="/?page=<%= nextPage %>" class="pagination-link">Next</a>
+			<% } %>
+		</div>
+	</div>
+</main>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const successMessage = document.getElementById("success-message");
+		if (successMessage) {
+			setTimeout(() => {
+				successMessage.style.display = "none";
+			}, 1000); // Hide message after 1 second
+
+			// Remove the message parameter from the URL
+			const url = new URL(window.location);
+			url.searchParams.delete("message");
+			window.history.replaceState({}, document.title, url);
+		}
+	});
+</script>
